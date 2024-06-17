@@ -15,6 +15,7 @@ import { Router } from 'itty-router';
 import getImages from './handlers/get_images';
 import createImage from './handlers/create_image';
 import getSingleImage from './handlers/get_single_image';
+import { Env } from './env';
 
 const router = Router();
 
@@ -24,14 +25,12 @@ router
 	.post('/images', createImage)
 	.get('*', () => new Response('Not Found', { status: 404 }));
 
-export interface Env {}
-
 export default {
 	async fetch(
 		request: Request,
 		env: Env,
 		ctx: ExecutionContext
 	): Promise<Response> {
-		return router.fetch(request);
+		return router.fetch(request, env);
 	},
 };
