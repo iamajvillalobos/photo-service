@@ -31,6 +31,12 @@ export default {
 		env: Env,
 		ctx: ExecutionContext
 	): Promise<Response> {
+		const auth_response = await env.AUTH.fetch(request.clone());
+
+		if (auth_response.status !== 200) {
+			return auth_response;
+		}
+
 		return router.fetch(request, env);
 	},
 };

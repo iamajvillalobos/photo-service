@@ -107,6 +107,10 @@ compatibility_flags = ["nodejs_compat"]
 # binding = "MY_INDEX"
 # index_name = "my-index"
 
+services = [
+  { binding = "AUTH", service = "authentication-service" }
+]
+
 [[d1_databases]]
 binding = "DB" # i.e. available in your Worker on env.DB
 database_name = "photo-service"
